@@ -72,7 +72,7 @@ order by 1,2
 
 
 -- looking at total population vs vaccinations
-
+--Shows what percent of the population has received at least one covid vaccine
 
 select*
 from [Portfolio Project]..CovidDeaths dea
@@ -99,7 +99,7 @@ where dea.continent is not null
 order by 2,3
 
 
---using CTE
+--Using CTE to perform calculations on partition by in previous  query 
 
 
 with PopvsVac (Continent, Location, Date, Population,new_vaccinations, RollingPeopleVaccinated)
@@ -117,7 +117,7 @@ where dea.continent is not null
 select *, (RollingPeopleVaccinated/Population)*100
 From PopvsVac
 
--- TEMP TABLE
+-- using TEMP TABLE to perform calculation on partition by in previous query
 
 drop table if exists #PercentpopulationVaccinated
 create table #PercentpopulationVaccinated
